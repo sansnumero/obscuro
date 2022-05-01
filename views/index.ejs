@@ -23,7 +23,7 @@
 						<p><%= comment.commentor %> - <%= comment.time_since %></p>
 						<p><%= comment.content %></p>
 						<button type="button">^ Upvote</button>
-						<p>comment.votes.count</p>
+						<p><%= comment.upvote_count %></p>
 					</li>
 				<% }) %>
 			</ul>

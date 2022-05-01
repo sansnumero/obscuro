@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   knex('users')
   .innerJoin('comments', 'users.id', 'comments.user_id')
-  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content')
+  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content', 'comments.upvote_count')
   .then((comments) => {
     return res.render('index', {
       comments: comments.map(comment_mapper.map)
