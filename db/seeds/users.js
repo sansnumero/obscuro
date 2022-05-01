@@ -25,6 +25,13 @@ exports.seed = async function(knex) {
       picture_url: 'https://image.shutterstock.com/image-photo/red-stretch-led-lights-600w-417917368.jpg', 
       created_at: Date.now(), 
       updated_at: Date.now()
+    },
+    {
+      id: 1000,
+      username: "Darth Vader",
+      picture_url: "https://image.shutterstock.com/image-photo/san-benedetto-del-tronto-italy-600w-239338216.jpg",
+      created_at: Date.now(), 
+      updated_at: Date.now()
     }
   ]);
 };

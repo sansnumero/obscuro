@@ -8,6 +8,12 @@ const comment_mapper = require('./services/comment_mapper');
 
 app.set('view engine', 'ejs');
 
+let current_user = {
+  id: 1000,
+  username: "Darth Vader",
+  picture_url: "https://image.shutterstock.com/image-photo/san-benedetto-del-tronto-italy-600w-239338216.jpg",
+}
+
 app.get('/', (req, res) => {
   knex('users')
   .innerJoin('comments', 'users.id', 'comments.user_id')
