@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<title>Discussion Page</title>
+	</head>
+
+	<body>
+		<h1>Discussion</h1>
+		<div>
+			<img src="" width="30" height="30">
+			<form>
+				<input type="text" placeholder="What are your thoughts?">
+				<input type="submit" value="Comment">
+			</form>
+		</div>
+		<hr>
+		<div>
+			<ul style="list-style-type:none;">
+				<% comments.forEach((comment) => { %>
+					<li>
+						<img src=<%= comment.commentor_avatar_url %> width="30" height="30">
+						<p><%= comment.commentor %> - <%= comment.time_since %></p>
+						<p><%= comment.content %></p>
+						<button type="button">^ Upvote</button>
+						<p>comment.votes.count</p>
+					</li>
+				<% }) %>
+			</ul>
+		</div>
+	</body>
+
+</html>
