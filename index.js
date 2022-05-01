@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('views'));
 
 let current_user = {
   id: 1000,
@@ -25,17 +26,27 @@ app.post("/comment/create",function(req,res){
     created_at: Date.now(),
     updated_at: Date.now()
   })
-  .then((what) => {
-    console.log("what")
-    console.log(what)
+  .then(() => {
     res.redirect('/');
   })
+});
+
+app.put("/comments/:commentId",function(req,res){
+  knex('comments')
+  .where('id', req.params.commentId)
+  .update({
+    updated_at: Date.now(),
+    upvote_count: knex.raw('upvote_count + 1')
+  })
+  .then(() => {
+    res.sendStatus(200);
+  });
 });
 
 app.get('/', (req, res) => {
   knex('users')
   .innerJoin('comments', 'users.id', 'comments.user_id')
-  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content', 'comments.upvote_count')
+  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content', 'comments.upvote_count', 'comments.id')
   .then((comments) => {
     return res.render('index', {
       comments: comments.map(comment_mapper.map)

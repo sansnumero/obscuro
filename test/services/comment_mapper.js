@@ -9,14 +9,16 @@ describe('Mapping regarding comments', function() {
 			picture_url: "picture_url",
 			created_at: time_now,
 			content: "content",
-			upvote_count: "10"
+			upvote_count: "10",
+			id: "1"
 		}
 		expected_comment_for_frontend = {
 			commentor: "username",
 			commentor_avatar_url: "picture_url",
 			time_since: Date.now() - time_now,
 			content: "content",
-			upvote_count: "10"
+			upvote_count: "10",
+			comment_id: "1"
 		}
 
 		result = comment_mapper.map(comment_from_backend)
@@ -26,5 +28,6 @@ describe('Mapping regarding comments', function() {
 		assert.equal(expected_comment_for_frontend.created_at, result.created_at)
 		assert.equal(expected_comment_for_frontend.content, result.content)
 		assert.equal(expected_comment_for_frontend.upvote_count, result.upvote_count)
+		assert.equal(expected_comment_for_frontend.comment_id, result.comment_id)
 	});
 });

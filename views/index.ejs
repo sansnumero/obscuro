@@ -22,12 +22,12 @@
 						<img src=<%= comment.commentor_avatar_url %> width="30" height="30">
 						<p><%= comment.commentor %> - <%= comment.time_since %></p>
 						<p><%= comment.content %></p>
-						<button type="button">^ Upvote</button>
+						<button class="upvote_button" data-comment-id=<%=comment.comment_id%>>Upvote</button>
 						<p><%= comment.upvote_count %></p>
 					</li>
 				<% }) %>
 			</ul>
 		</div>
 	</body>
-
+	<script type="text/javascript" src="/upvote.js"></script>
 </html>
