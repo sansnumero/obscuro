@@ -12,6 +12,7 @@ app.route("/comment/create")
   .post(comment.postComment);
 
 app.route("/comments/:commentId")
+  .get(comment.getComment)
   .put(comment.updateComment);
 
 app.route("/")

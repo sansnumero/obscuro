@@ -1,5 +1,5 @@
 var assert  = require('chai').assert;
-var comment_mapper = require('../../services/comment_mapper');
+var comment_mapper = require('../../app/services/comment_mapper');
 
 describe('Mapping regarding comments', function() {
 	it('maps according to the needs of the front end', function() {
@@ -9,7 +9,6 @@ describe('Mapping regarding comments', function() {
 			picture_url: "picture_url",
 			created_at: time_now,
 			content: "content",
-			upvote_count: "10",
 			id: "1"
 		}
 		expected_comment_for_frontend = {
@@ -17,7 +16,6 @@ describe('Mapping regarding comments', function() {
 			commentor_avatar_url: "picture_url",
 			time_since: Date.now() - time_now,
 			content: "content",
-			upvote_count: "10",
 			comment_id: "1"
 		}
 
@@ -27,7 +25,6 @@ describe('Mapping regarding comments', function() {
 		assert.equal(expected_comment_for_frontend.picture_url, result.picture_url)
 		assert.equal(expected_comment_for_frontend.created_at, result.created_at)
 		assert.equal(expected_comment_for_frontend.content, result.content)
-		assert.equal(expected_comment_for_frontend.upvote_count, result.upvote_count)
 		assert.equal(expected_comment_for_frontend.comment_id, result.comment_id)
 	});
 });
