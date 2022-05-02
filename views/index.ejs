@@ -22,12 +22,15 @@
 						<img src=<%= comment.commentor_avatar_url %> width="30" height="30">
 						<p><%= comment.commentor %> - <%= comment.time_since %></p>
 						<p><%= comment.content %></p>
-						<button class="upvote_button" data-comment-id=<%=comment.comment_id%>>Upvote</button>
-						<p><%= comment.upvote_count %></p>
+						<span>
+							<div class="upvote_button_container" data-comment-id=<%=comment.comment_id%>></div>
+						</span>
 					</li>
 				<% }) %>
 			</ul>
 		</div>
 	</body>
-	<script type="text/javascript" src="/upvote.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="upvote_button.js"></script>
 </html>

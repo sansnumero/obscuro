@@ -2,6 +2,18 @@ const knexConfig = require('../../db/knexfile');
 const knex = require('knex')(knexConfig['development'])
 const comment_mapper = require('../services/comment_mapper');
 
+function getComment(req, res) {
+	knex('comments')
+  .where('id', req.params.commentId)
+  .then((comment) => {
+    return res.json(comment);
+  })
+  .catch((err) => {
+    console.error(err);
+    return res.json({success: false, message: 'An error occurred, please try again later.'});
+  })
+}
+
 function getComments(req, res) {
 	knex('users')
   .innerJoin('comments', 'users.id', 'comments.user_id')
@@ -49,4 +61,4 @@ function postComment(req, res) {
 	});
 }
 
-module.exports = { getComments, updateComment, postComment };
+module.exports = { getComment, getComments, updateComment, postComment };
