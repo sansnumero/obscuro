@@ -17,7 +17,7 @@ function getComment(req, res) {
 function getComments(req, res) {
 	knex('users')
   .innerJoin('comments', 'users.id', 'comments.user_id')
-  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content', 'comments.upvote_count', 'comments.id')
+  .select('users.username', 'users.picture_url', 'comments.created_at', 'comments.content', 'comments.upvote_count', 'comments.id', 'comments.parent_id')
   .then((comments) => {
     return res.render('index', {
       comments: comments.map(comment_mapper.map)
@@ -47,12 +47,17 @@ function postComment(req, res) {
 		username: "Darth Vader",
 		picture_url: "https://image.shutterstock.com/image-photo/san-benedetto-del-tronto-italy-600w-239338216.jpg",
 	}
+  console.log(req.body.parent_id)
+  if(req.body.parent_id == "") {
+    var parent_id = null
+  }
 
 	knex('comments')
 	.insert({
 		content: req.body.comment_content, 
 		user_id: current_user.id,
 		upvote_count: 0,
+    parent_id: parent_id,
 		created_at: Date.now(),
 		updated_at: Date.now()
 	})
