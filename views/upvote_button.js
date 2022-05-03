@@ -12,19 +12,20 @@ class UpvoteButton extends React.Component {
   render() {
     return e('span', 
       { style: { display: 'inline' } }, 
-      e("p",
-        { style: { display: 'inline' } }, 
-        this.state.upvote_count
-      ),
       e('button',
         { onClick: () => {
             let updated_count = this.state.upvote_count + 1
             this.setState({ liked: true, upvote_count: updated_count })
             fetch(`/comments/${this.props.comment_id}`, {method: 'PUT'})
               .then(function(response) { console.log(response); });
-          }
+          },
+          className: "btn btn-primary"
         },
-        'Upvote'
+        '^'
+      ),
+      e("p",
+        { style: { display: 'inline', padding: '5px' } }, 
+        this.state.upvote_count
       )
     );
   }

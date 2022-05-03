@@ -5,7 +5,8 @@ module.exports = {
 			commentor_avatar_url: comment.picture_url,
 			time_since: Date.now() - comment.created_at,
 			content: comment.content,
-			comment_id: comment.id
+			comment_id: comment.id,
+			parent_id: comment.parent_id
 		};
 	}
 };

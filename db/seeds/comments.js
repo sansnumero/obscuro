@@ -10,6 +10,7 @@ exports.seed = async function(knex) {
       content: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
       user_id: 1,
       upvote_count: 10,
+      parent_id: null,
       created_at: Date.now(), 
       updated_at: Date.now()
     },
@@ -18,6 +19,7 @@ exports.seed = async function(knex) {
       content: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 
       user_id: 2, 
       upvote_count: 20,
+      parent_id: null,
       created_at: Date.now(), 
       updated_at: Date.now()
     },
@@ -26,6 +28,7 @@ exports.seed = async function(knex) {
       content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 
       user_id: 3, 
       upvote_count: 30,
+      parent_id: 1,
       created_at: Date.now(), 
       updated_at: Date.now()
     }

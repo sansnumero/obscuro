@@ -1,0 +1,17 @@
+<li class="list-group-item list-group-item-action" data-parent-id=<%=parent_id%>>
+    <div>
+        <img src=<%= comment.commentor_avatar_url %> width="30" height="30" style="border-radius:50%">
+        <p style="display:inline;"><%= comment.commentor %> - <%= comment.time_since %></p>
+    </div>
+    <p><%= comment.content %></p>
+    <div class="container">
+			<div class="row">
+				<div class="col-sm-2" style="padding-top:20px;">
+					<div class="upvote_button_container" data-comment-id=<%=comment.comment_id%>></div>
+				</div>
+				<div class="col-md-10">
+					<%- include('./comment_form', {parent_id: comment.comment_id}); %>
+				</div>
+			</div>
+    </div>
+</li>
