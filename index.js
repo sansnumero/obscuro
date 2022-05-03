@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 let comment = require('./app/routes/comment');
 
@@ -18,6 +18,6 @@ app.route("/comments/:commentId")
 app.route("/")
   .get(comment.getComments);
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`App listening at ${ PORT }`);
 });
